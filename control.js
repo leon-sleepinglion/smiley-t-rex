@@ -18,11 +18,16 @@ async function run() {
 
     // Try to access users webcam and stream the images
     const videoEl = document.getElementById('inputVideo')
-    navigator.getUserMedia(
-        { video: {} },
-        stream => videoEl.srcObject = stream,
-        err => console.error(err)
-    )
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            videoEl.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.log(error)
+            console.log("Something went wrong!");
+          });
+      }
 }
 
 async function onPlay(videoEl) {
