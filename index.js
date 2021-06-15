@@ -1,3 +1,4 @@
+globalDucking = false;
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -701,6 +702,7 @@
                 } else if (!this.tRex.jumping && !this.tRex.ducking) {
                     // Duck.
                     this.tRex.setDuck(true);
+                    globalDucking = true;
                 }
             }
         },
